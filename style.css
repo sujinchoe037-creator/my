@@ -327,3 +327,15 @@ section[aria-label="오늘 완료 기록"] > div:last-child > p:last-child { fon
   main > section:first-child > div:first-child { grid-column: 2; grid-row: 2; } /* 달력 */
   section[aria-label="오늘 완료 기록"] { grid-column: 2; grid-row: 3; max-width: none; margin: 0; }
 }
+
+/* ---------- 타이머 카드 아래 넝쿨 장식 (그림 파일 없이 CSS 안에서 그림) ---------- */
+section[aria-label="타이머"] { overflow: hidden; }
+section[aria-label="타이머"]::after {
+  content: "";
+  display: block;
+  height: 70px;
+  margin: 20px -20px -30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='70' viewBox='0 0 120 70'%3E%3Cpath d='M0 40 Q30 0 60 40 T120 40' fill='none' stroke='%23a3b18a' stroke-width='3.5' stroke-linecap='round'/%3E%3Cpath d='M60 40 q6 -16 15 -9 q5 6 -3 9' fill='none' stroke='%23a3b18a' stroke-width='2.5' stroke-linecap='round'/%3E%3Cellipse cx='22' cy='17' rx='11' ry='5' transform='rotate(-55 22 17)' fill='%23dad7cd' stroke='%231b2a1e' stroke-width='1.5'/%3E%3Cellipse cx='40' cy='13' rx='9' ry='4' transform='rotate(35 40 13)' fill='%23a3b18a' stroke='%231b2a1e' stroke-width='1.5'/%3E%3Cellipse cx='96' cy='60' rx='11' ry='5' transform='rotate(-35 96 60)' fill='%23dad7cd' stroke='%231b2a1e' stroke-width='1.5'/%3E%3Cellipse cx='80' cy='64' rx='9' ry='4' transform='rotate(40 80 64)' fill='%23a3b18a' stroke='%231b2a1e' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
