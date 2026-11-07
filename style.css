@@ -87,9 +87,15 @@ main {
   align-items: start;
 }
 
+/* 달력·할 일 묶음을 풀어서, 각 카드를 따로 자리 잡을 수 있게 함 */
 main > section:first-child {
-  display: grid;
-  gap: 20px;
+  display: contents;
+}
+
+@media (min-width: 761px) {
+  section[aria-label="타이머"] { grid-column: 1; grid-row: 1; }
+  main > section:first-child > div:last-child { grid-column: 1; grid-row: 2; }   /* 할 일: 타이머 아래 */
+  main > section:first-child > div:first-child { grid-column: 2; grid-row: 1 / span 2; } /* 달력: 오른쪽 */
 }
 
 /* 달력 / 할 일 카드 */
