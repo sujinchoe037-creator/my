@@ -82,7 +82,7 @@ main {
   max-width: 1100px;
   margin: 0 auto 20px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
   gap: 20px;
   align-items: start;
 }
@@ -122,9 +122,12 @@ th { font-size: 12px; font-weight: 700; color: var(--green-dark); padding: 2px 0
 td { padding: 0; }
 td button {
   width: 100%;
-  aspect-ratio: 1;
-  padding: 0;
-  font-size: 14px;
+  min-height: 88px;          /* 기록(스티커)이 들어갈 수 있게 칸을 키움 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 6px 8px;
+  font-size: 15px;
   box-shadow: 2px 2px 0 var(--ink);
 }
 /* 선택한 날(첫 줄 마지막 칸 = 7일) */
@@ -204,9 +207,9 @@ section[aria-label="타이머"] > p:nth-child(2) {
 }
 section[aria-label="타이머"] > p:nth-child(3) { font-size: 13px; font-weight: 700; opacity: 0.9; }
 section[aria-label="타이머"] > h2 {
-  font-size: clamp(24px, 5.5vw, 44px);
+  font-size: clamp(20px, 2.6vw, 30px);
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.25;
   margin: 6px 0 10px;
   color: var(--white);
   text-shadow: 3px 3px 0 var(--ink);
@@ -215,7 +218,7 @@ section[aria-label="타이머"] > p:nth-child(5) { font-size: 13px; }
 
 /* 동그란 타이머 */
 section[aria-label="타이머"] > div:nth-of-type(1) {
-  width: min(260px, 72%);
+  width: min(220px, 80%);
   aspect-ratio: 1;
   margin: 18px auto;
   background: var(--white);
@@ -230,7 +233,7 @@ section[aria-label="타이머"] > div:nth-of-type(1) {
 }
 section[aria-label="타이머"] > div:nth-of-type(1) > p:first-child {
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: clamp(40px, 11vw, 60px);
+  font-size: clamp(34px, 4.5vw, 48px);
   font-weight: 900;
   line-height: 1;
 }
@@ -296,6 +299,9 @@ section[aria-label="오늘 완료 기록"] > div:last-child > p:last-child { fon
 @media (max-width: 760px) {
   body { padding: 16px; }
   main { grid-template-columns: 1fr; }
+  td button { min-height: 60px; padding: 4px 5px; font-size: 13px; }
+  section[aria-label="타이머"] > h2 { font-size: clamp(22px, 6vw, 30px); }
+  section[aria-label="타이머"] > div:nth-of-type(1) > p:first-child { font-size: clamp(40px, 11vw, 56px); }
   section[aria-label="타이머"] { padding: 52px 14px 24px; }
   section[aria-label="타이머"] > div:nth-of-type(2) > button { flex: 1 1 auto; }
   section[aria-label="오늘 완료 기록"] { padding: 16px; }
