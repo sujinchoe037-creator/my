@@ -82,7 +82,7 @@ main {
   max-width: 1100px;
   margin: 0 auto 20px;
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
   gap: 20px;
   align-items: start;
 }
@@ -169,6 +169,7 @@ li > button:first-child { border-radius: 50%; background: var(--white); }
 
 /* ---------- 타이머 카드 ---------- */
 section[aria-label="타이머"] {
+  order: -1;                 /* 달력보다 앞(왼쪽, 휴대폰에서는 위)으로 */
   position: relative;
   background: var(--green);
   color: var(--white);
