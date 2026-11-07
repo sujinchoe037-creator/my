@@ -322,7 +322,14 @@ section[aria-label="오늘 완료 기록"] > div:last-child > p:last-child { fon
   }
   header { grid-column: 1 / -1; width: 100%; max-width: none; margin: 0; }
   main { display: contents; }
-  section[aria-label="타이머"] { grid-column: 1; grid-row: 2; }
+  section[aria-label="타이머"] {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: stretch;          /* 달력 높이만큼 늘려서 아래 빈 띠를 채움 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      /* 안쪽 내용은 가운데로 */
+  }
   main > section:first-child > div:last-child { grid-column: 1; grid-row: 3; }  /* 할 일 */
   main > section:first-child > div:first-child { grid-column: 2; grid-row: 2; } /* 달력 */
   section[aria-label="오늘 완료 기록"] { grid-column: 2; grid-row: 3; max-width: none; margin: 0; }
