@@ -1,0 +1,302 @@
+/* 몰입 스프린트 - 모양만 꾸미는 파일 (초록색 #588157 기준) */
+
+:root {
+  --green: #588157;      /* 기본 초록 */
+  --green-dark: #3a5a40; /* 진한 초록 */
+  --green-mid: #a3b18a;  /* 중간 초록 */
+  --green-light: #dad7cd;/* 연한 초록빛 회색 */
+  --paper: #f4f3ea;      /* 바탕색 */
+  --ink: #1b2a1e;        /* 글자와 테두리 */
+  --white: #ffffff;
+  --line: 3px solid var(--ink);
+  --shadow: 5px 5px 0 var(--ink);
+  --shadow-s: 3px 3px 0 var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+p, h1, h2, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+/* 공통 버튼 */
+button {
+  font: inherit;
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: var(--shadow-s);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+/* ---------- 위쪽 제목 ---------- */
+header {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+header > div:first-child > p {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--green);
+}
+
+h1 {
+  font-size: clamp(34px, 8vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+header > div:last-child {
+  background: var(--green-mid);
+  border: var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-s);
+  padding: 8px 18px;
+  text-align: center;
+  transform: rotate(2deg);
+  flex-shrink: 0;
+}
+header > div:last-child > p:first-child { font-size: 32px; font-weight: 900; line-height: 1; }
+header > div:last-child > p:last-child { font-size: 11px; font-weight: 800; }
+
+/* ---------- 가운데 두 칸 ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 20px;
+  align-items: start;
+}
+
+main > section:first-child {
+  display: grid;
+  gap: 20px;
+}
+
+/* 달력 / 할 일 카드 */
+main > section:first-child > div {
+  background: var(--white);
+  border: var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+/* 달력 위쪽(달 이동) */
+main > section:first-child > div:first-child > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+main > section:first-child > div:first-child > div > button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 18px;
+}
+h2 { font-size: 18px; font-weight: 900; }
+
+/* 달력 표 */
+table { width: 100%; border-collapse: separate; border-spacing: 3px; table-layout: fixed; }
+th { font-size: 12px; font-weight: 700; color: var(--green-dark); padding: 2px 0; }
+td { padding: 0; }
+td button {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  font-size: 14px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+/* 선택한 날(첫 줄 마지막 칸 = 7일) */
+tbody tr:first-child td:last-child button { background: var(--green); color: var(--white); }
+
+/* 할 일 카드 */
+main > section:first-child > div:last-child > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+main > section:first-child > div:last-child > div:first-child p {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--green);
+}
+main > section:first-child > div:last-child > div:first-child > button {
+  background: var(--green);
+  color: var(--white);
+}
+
+ul { display: grid; gap: 8px; }
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 8px;
+}
+li > div { flex: 1; min-width: 0; }
+li > div > p:first-child { font-size: 14px; font-weight: 800; }
+li > div > p:last-child { font-size: 11px; color: var(--green-dark); }
+li > button { width: 28px; height: 28px; padding: 0; box-shadow: none; flex-shrink: 0; }
+li > button:first-child { border-radius: 50%; background: var(--white); }
+
+/* ---------- 타이머 카드 ---------- */
+section[aria-label="타이머"] {
+  position: relative;
+  background: var(--green);
+  color: var(--white);
+  border: var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 56px 20px 28px;
+  text-align: center;
+}
+/* NOW FOCUS! 딱지 */
+section[aria-label="타이머"] > p:nth-child(1) {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--green-mid);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 900;
+  transform: rotate(-4deg);
+}
+/* 준비 완료 알약 */
+section[aria-label="타이머"] > p:nth-child(2) {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 12px;
+  font-weight: 800;
+}
+section[aria-label="타이머"] > p:nth-child(3) { font-size: 13px; font-weight: 700; opacity: 0.9; }
+section[aria-label="타이머"] > h2 {
+  font-size: clamp(24px, 5.5vw, 44px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 6px 0 10px;
+  color: var(--white);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+section[aria-label="타이머"] > p:nth-child(5) { font-size: 13px; }
+
+/* 동그란 타이머 */
+section[aria-label="타이머"] > div:nth-of-type(1) {
+  width: min(260px, 72%);
+  aspect-ratio: 1;
+  margin: 18px auto;
+  background: var(--white);
+  color: var(--ink);
+  border: var(--line);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section[aria-label="타이머"] > div:nth-of-type(1) > p:first-child {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: clamp(40px, 11vw, 60px);
+  font-weight: 900;
+  line-height: 1;
+}
+section[aria-label="타이머"] > div:nth-of-type(1) > p:last-child { font-size: 11px; margin-top: 6px; }
+
+/* 타이머 버튼 */
+section[aria-label="타이머"] > div:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+section[aria-label="타이머"] > div:nth-of-type(2) > button:nth-child(1) { background: var(--green-mid); }
+section[aria-label="타이머"] > div:nth-of-type(2) > button:nth-child(3) { background: var(--green-light); }
+
+/* ---------- 아래 완료 기록 ---------- */
+section[aria-label="오늘 완료 기록"] {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--green-mid);
+  border: var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+section[aria-label="오늘 완료 기록"] > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+section[aria-label="오늘 완료 기록"] > div:first-child > div > p:first-child {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--green-dark);
+}
+section[aria-label="오늘 완료 기록"] > div:first-child > div > h2 { font-size: 24px; }
+section[aria-label="오늘 완료 기록"] > div:first-child > div > p:last-child { font-size: 13px; }
+/* 0 DONE 알약 */
+section[aria-label="오늘 완료 기록"] > div:first-child > p {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+/* 비어 있을 때 안내 상자 */
+section[aria-label="오늘 완료 기록"] > div:last-child {
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 22px 16px;
+  text-align: center;
+}
+section[aria-label="오늘 완료 기록"] > div:last-child > p:first-child { font-weight: 800; margin-bottom: 4px; }
+section[aria-label="오늘 완료 기록"] > div:last-child > p:last-child { font-size: 13px; }
+
+/* ---------- 휴대폰 폭 ---------- */
+@media (max-width: 760px) {
+  body { padding: 16px; }
+  main { grid-template-columns: 1fr; }
+  section[aria-label="타이머"] { padding: 52px 14px 24px; }
+  section[aria-label="타이머"] > div:nth-of-type(2) > button { flex: 1 1 auto; }
+  section[aria-label="오늘 완료 기록"] { padding: 16px; }
+}
